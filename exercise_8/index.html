@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 8</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Log in</h1>
+
+      <form>
+        <div class="form-item">
+          <label for="name">Name:</label>
+          <input type="text" name="name" id="name" />
+          <div class="error" id="nameError"></div>
+        </div>
+
+        <div class="form-item">
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email" />
+          <div class="error" id="emailError"></div>
+        </div>
+        <div class="success" id="successMessage"></div>
+        <input type="submit" value="Submit" class="btn" />
+      </form>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("form").submit(function (e) {
+          e.preventDefault();
+          let name = $("#name").val();
+          let email = $("#email").val();
+
+          let nameError = $("#nameError");
+          let emailError = $("#emailError");
+          let successMessage = $("#successMessage");
+          let isValid = true;
+
+          if (name === "") {
+            nameError.text("Name is required");
+            isValid = false;
+          } else {
+            nameError.text("");
+          }
+
+          if (email === "") {
+            emailError.text("Email is required");
+            isValid = false;
+          } else {
+            emailError.text("");
+          }
+
+          if (isValid) {
+            successMessage.text("Form submitted successfully");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
